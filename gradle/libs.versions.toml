@@ -17,6 +17,12 @@ materialVersion = "1.6.7"
 uiTooling = "1.6.7"
 uiToolingPreview = "1.6.7"
 
+# Android
+compile-Sdk = "34"
+min-Sdk = "30"
+version-Code = "1"
+version-Name = "1.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
