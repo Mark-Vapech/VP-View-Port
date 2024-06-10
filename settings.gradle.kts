@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "VP-View Port"
 include(":app")
 include(":screen - splash screen")
+include(":base")
+include(":screen - register")

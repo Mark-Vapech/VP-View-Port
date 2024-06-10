@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name=".LoginAndRegister"
+            android:exported="false"
+            android:label="@string/title_activity_login_and_register"
+            android:theme="@style/Theme.VPViewPort" />
+    </application>
+
+</manifest>

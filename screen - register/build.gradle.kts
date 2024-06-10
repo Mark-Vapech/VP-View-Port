@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "app.vp.screen_splashscreen"
+    namespace = "app.vp.screen_register"
     compileSdk = 34
 
     defaultConfig {
@@ -58,8 +58,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(project(":base"))
-    implementation(project(":screen - register"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
