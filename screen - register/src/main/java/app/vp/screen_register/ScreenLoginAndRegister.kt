@@ -12,24 +12,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import app.vp.screen_register.login.LoginWithGoogle
+import app.vp.screen_register.login.LoginScreen
 import app.vp.screen_register.ui.theme.VPViewPortTheme
 
 class ScreenLoginAndRegister : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            VPViewPortTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Scaffold {
-                        LoginWithGoogle(Modifier.padding(it))
-                    }
-                }
-            }
+            LoginScreen(Modifier)
         }
     }
 }
@@ -44,7 +34,7 @@ fun GreetingPreview() {
             color = MaterialTheme.colorScheme.background
         ) {
             Scaffold {
-                LoginWithGoogle(Modifier.padding(it))
+                LoginScreen(Modifier.padding(it))
             }
         }
     }

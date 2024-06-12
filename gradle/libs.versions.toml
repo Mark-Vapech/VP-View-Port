@@ -16,6 +16,8 @@ lifecycleViewmodelCompose = "2.8.1"
 lifecycleViewmodelKtx = "2.8.1"
 material = "1.12.0"
 materialVersion = "1.6.7"
+onetapcompose = "1.0.12"
+uiTestAndroid = "1.6.7"
 uiTooling = "1.6.7"
 uiToolingPreview = "1.6.7"
 daggerHilt = "2.50"
@@ -32,6 +34,7 @@ version-Name = "1.0"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
+androidx-ui-test-android = { module = "androidx.compose.ui:ui-test-android", version.ref = "uiTestAndroid" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -52,6 +55,9 @@ lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
+
+#github
+github-onetapcompose = { module = "com.github.stevdza-san:OneTapCompose", version.ref = "onetapcompose" }
 
 #Hilt
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWork" }
