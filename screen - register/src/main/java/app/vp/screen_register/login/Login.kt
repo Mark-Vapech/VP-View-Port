@@ -6,6 +6,7 @@ import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,10 +19,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,18 +31,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.vp.base.textCustom.BasicTextFieldCustom
 import app.vp.base.viewModel.LoginViewModel
+import app.vp.screen_register.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.stevdzasan.onetap.GoogleUser
-import com.stevdzasan.onetap.rememberOneTapSignInState
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -153,11 +152,10 @@ fun SignInWithGoogleButton(
                 viewModel.signIn(context = context, token = token, launcher = launcher)
             }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = Icons.Default.AddCircle,
-                    contentDescription = "Google",
-                    modifier = Modifier.size(24.dp)
-                )
+                Image(painter = painterResource(id = R.drawable.google_logo),
+                    contentDescription ="",
+                    modifier = Modifier.size(25.dp),
+                    contentScale = ContentScale.Fit )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(text = "Sign in With Google")
             }
