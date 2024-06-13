@@ -37,7 +37,9 @@ import com.stevdzasan.onetap.getUserFromTokenId
 import com.stevdzasan.onetap.rememberOneTapSignInState
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier
             .padding(horizontal = 30.dp)
@@ -50,17 +52,19 @@ fun LoginScreen(modifier: Modifier = Modifier) {
         var password by remember { mutableStateOf("") }
         val state = rememberOneTapSignInState()
 
-        BasicTextFieldCustom(value = username, onValueChange = { username = it })
+        BasicTextFieldCustom(name = "Username", value = username, onValueChange = { username = it })
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        BasicTextFieldCustom(value = password, onValueChange = { password = it })
+        BasicTextFieldCustom(name = "Password", value = password, onValueChange = { password = it })
 
         Spacer(modifier = Modifier.height(15.dp))
 
         SignInWithGoogleButton(state = state)
 
         Spacer(modifier = Modifier.height(15.dp))
+
+        SignInWithFacebookButton(){}
 
         LoginButton(){
 
@@ -87,7 +91,7 @@ fun SignInWithGoogleButton(state: OneTapSignInState) {
 
     OneTapSignInWithGoogle(
         state = state,
-        clientId = "CLIENT_ID",
+        clientId = "725558427498-ratlienpiv3qa8v16f23kglca55igd6f.apps.googleusercontent.com",
         rememberAccount = false,
         onTokenIdReceived = {
             user = getUserFromTokenId(tokenId = it)
@@ -105,8 +109,8 @@ fun SignInWithGoogleButton(state: OneTapSignInState) {
         contentAlignment = Alignment.Center
     ) {
         OutlinedButton(
-//            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
             onClick = { state.open() }) {
+
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.AddCircle,
@@ -125,3 +129,7 @@ fun SignInWithGoogleButton(state: OneTapSignInState) {
     }
 }
 
+@Composable
+fun SignInWithFacebookButton(onClick: () -> Unit) {
+
+}

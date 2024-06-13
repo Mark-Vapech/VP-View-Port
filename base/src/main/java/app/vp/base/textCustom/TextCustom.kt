@@ -73,10 +73,10 @@ fun OutlinedTextFieldCustom(value: String, label: String, onValueChange: (String
 }
 
 @Composable
-fun BasicTextFieldCustom(value: String, onValueChange: (String) -> Unit) {
+fun BasicTextFieldCustom(name: String, value: String, onValueChange: (String) -> Unit) {
 
     Column(modifier =  Modifier.padding(horizontal = 16.dp)) {
-        Text(text = ".......")
+        Text(text = name)
         Spacer(modifier = Modifier.height(10.dp))
         BasicTextField(
             modifier = Modifier

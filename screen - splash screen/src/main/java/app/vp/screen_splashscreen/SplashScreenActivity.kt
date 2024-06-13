@@ -3,7 +3,6 @@ package app.vp.screen_splashscreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -14,14 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import app.vp.base.loading.loadingAnimation
-import app.vp.screen_register.ScreenLoginAndRegister
 import app.vp.screen_register.login.LoginScreen
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.seconds
 
 @Composable
 fun SplashScreenActivity(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     var loading by remember { mutableStateOf(true) }
 
