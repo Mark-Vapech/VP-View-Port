@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        println("VPViewPortTheme")
+        println("XXXXXXXXXXXX")
         setContent {
             VPViewPortTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
