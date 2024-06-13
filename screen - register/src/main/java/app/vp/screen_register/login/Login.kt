@@ -75,11 +75,8 @@ fun LoginScreen(
 
         var username by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
-        val user: GoogleUser? by remember { mutableStateOf(null) }
         val token = "725558427498-ratlienpiv3qa8v16f23kglca55igd6f.apps.googleusercontent.com"
         val context = LocalContext.current
-
-        val state = rememberOneTapSignInState()
 
         BasicTextFieldCustom(name = "Username", value = username, onValueChange = { username = it })
 
