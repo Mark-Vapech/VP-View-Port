@@ -56,6 +56,7 @@ fun LoginScreen(
 
     val viewModel = viewModel<LoginViewModel>()
     var user by remember { mutableStateOf(FirebaseAuth.getInstance().currentUser) }
+
     val launcher = rememberFirebaseAuth(onAuthSuccess =
     { succes ->
         user = succes.user
