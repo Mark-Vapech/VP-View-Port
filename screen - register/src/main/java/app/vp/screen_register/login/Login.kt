@@ -39,7 +39,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import app.vp.base.textCustom.BasicTextFieldCustom
 import app.vp.base.viewModel.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -89,9 +88,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(15.dp))
 
-        SignInWithGoogleButton(token, context, launcher) {
-
-        }
+        SignInWithGoogleButton(token, context, launcher, viewModel)
 
         Spacer(modifier = Modifier.height(15.dp))
 
@@ -144,8 +141,8 @@ fun SignInWithGoogleButton(
     token: String,
     context: Context,
     launcher: ManagedActivityResultLauncher<Intent, ActivityResult>,
-    onClick: () -> Unit
-) {
+    viewModel: LoginViewModel,
+    ) {
 
     Box(
         modifier = Modifier
@@ -155,14 +152,7 @@ fun SignInWithGoogleButton(
     ) {
         OutlinedButton(
             onClick = {
-                val gso = GoogleSignInOptions
-                    .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(token)
-                    .requestEmail()
-                    .build()
-
-                val googleSignInClient = GoogleSignIn.getClient(context, gso)
-                launcher.launch(googleSignInClient.signInIntent)
+                viewModel.signIn(context = context, token = token, launcher = launcher)
             }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(

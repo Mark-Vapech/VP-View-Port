@@ -35,7 +35,6 @@ fun SplashScreenActivity(
                 delay(2.seconds)
                 loading = false
             }
-
         }
 
         if (loading) {
