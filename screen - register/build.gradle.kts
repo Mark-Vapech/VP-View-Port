@@ -81,13 +81,18 @@ dependencies {
     implementation(libs.dagger.hilt.android.gradle.plugin)
     implementation(libs.androidx.hilt.work)
     implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
 
     androidTestImplementation(libs.androidx.ui.test.android)
     implementation(libs.github.onetapcompose)
 
+    // firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.play.services.auth)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.google.services)
+
 }

@@ -39,7 +39,7 @@ fun Greeting(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        SplashScreenActivity(modifier)
+        SplashScreenActivity(modifier = modifier)
     }
 }
 
