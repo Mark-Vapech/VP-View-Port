@@ -3,7 +3,6 @@ package app.vp.screen_splashscreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -13,7 +12,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import app.vp.base.loading.loadingAnimation
+import app.vp.base.viewModel.SplashScreenViewModel
 import app.vp.screen_register.login.LoginScreen
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.seconds
@@ -23,6 +25,8 @@ fun SplashScreenActivity(
     modifier: Modifier = Modifier,
 ) {
     var loading by remember { mutableStateOf(true) }
+    val viewModel = viewModel<SplashScreenViewModel>()
+    viewModel.remoteConfigWitnFirebase()
 
     Column(
         modifier = modifier

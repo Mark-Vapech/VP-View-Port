@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
+//    id("kotlin-kapt")
+//    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -76,14 +76,14 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    implementation(libs.dagger.hilt.android)
-    kapt(libs.dagger.hilt.android.compiler)
-    implementation(libs.dagger.hilt.android.gradle.plugin)
-    implementation(libs.androidx.hilt.work)
-    implementation(libs.androidx.work.runtime.ktx)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.coil.compose)
+//    implementation(libs.dagger.hilt.android)
+//    kapt(libs.dagger.hilt.android.compiler)
+//    implementation(libs.dagger.hilt.android.gradle.plugin)
+//    implementation(libs.androidx.hilt.work)
+//    implementation(libs.androidx.work.runtime.ktx)
+//    implementation(libs.androidx.lifecycle.runtime.compose)
+//    implementation(libs.androidx.navigation.compose)
+//    implementation(libs.coil.compose)
 
     androidTestImplementation(libs.androidx.ui.test.android)
     implementation(libs.github.onetapcompose)

@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package app.vp.screen_register.login
 
 import android.content.Context
@@ -57,8 +59,8 @@ fun LoginScreen(
     var user by remember { mutableStateOf(FirebaseAuth.getInstance().currentUser) }
 
     val launcher = rememberFirebaseAuth(onAuthSuccess =
-    { succes ->
-        user = succes.user
+    { success ->
+        user = success.user
     }, onAuthError = { error ->
         user = null
     })
@@ -74,7 +76,6 @@ fun LoginScreen(
 
         var username by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
-        val token = "725558427498-ratlienpiv3qa8v16f23kglca55igd6f.apps.googleusercontent.com"
         val context = LocalContext.current
 
         BasicTextFieldCustom(name = "Username", value = username, onValueChange = { username = it })
@@ -85,7 +86,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(15.dp))
 
-        SignInWithGoogleButton(token, context, launcher, viewModel)
+        SignInWithGoogleButton(context, launcher, viewModel)
 
         Spacer(modifier = Modifier.height(15.dp))
 
@@ -135,7 +136,6 @@ fun LoginButton(onClick: () -> Unit) {
 @Suppress("UNUSED_EXPRESSION")
 @Composable
 fun SignInWithGoogleButton(
-    token: String,
     context: Context,
     launcher: ManagedActivityResultLauncher<Intent, ActivityResult>,
     viewModel: LoginViewModel,
@@ -149,7 +149,7 @@ fun SignInWithGoogleButton(
     ) {
         OutlinedButton(
             onClick = {
-                viewModel.signIn(context = context, token = token, launcher = launcher)
+                viewModel.signIn(context = context, launcher = launcher)
             }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(painter = painterResource(id = R.drawable.google_logo),
