@@ -3,9 +3,9 @@
 
     <application>
         <activity
-            android:name=".ScreenLoginAndRegister"
+            android:name=".mainHome.MainHomeActivity"
             android:exported="false"
-            android:label="@string/title_activity_login_and_register"
+            android:label="@string/MainHomeActivity"
             android:theme="@style/Theme.VPViewPort" />
     </application>
 

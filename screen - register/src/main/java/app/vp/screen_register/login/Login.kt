@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.vp.base.textCustom.BasicTextFieldCustom
 import app.vp.base.viewModel.LoginViewModel
+import app.vp.screen_home.mainHome.MainHomeActivity
 import app.vp.screen_register.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -53,14 +54,19 @@ import kotlinx.coroutines.tasks.await
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
+    context: Context,
 ) {
 
     val viewModel = viewModel<LoginViewModel>()
     var user by remember { mutableStateOf(FirebaseAuth.getInstance().currentUser) }
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
 
     val launcher = rememberFirebaseAuth(onAuthSuccess =
     { success ->
-        user = success.user
+//        val intent = Intent(context, MainHomeActivity::class.java)
+//        context.startActivity(intent)
     }, onAuthError = { error ->
         user = null
     })
@@ -73,10 +79,6 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
-        var username by remember { mutableStateOf("") }
-        var password by remember { mutableStateOf("") }
-        val context = LocalContext.current
 
         BasicTextFieldCustom(name = "Username", value = username, onValueChange = { username = it })
 
@@ -109,7 +111,6 @@ fun rememberFirebaseAuth(
         val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
         try {
             val account = task.getResult(ApiException::class.java)!!
-
             val credential = GoogleAuthProvider.getCredential(account.idToken!!, null)
             scope.launch {
                 val authResult = FirebaseAuth.getInstance().signInWithCredential(credential).await()

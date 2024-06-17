@@ -12,6 +12,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import app.vp.screen_splashscreen.SplashScreenActivity
 import app.vp.vp_viewport.ui.theme.VPViewPortTheme
 import com.google.firebase.FirebaseApp
@@ -41,7 +42,7 @@ fun Greeting(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        SplashScreenActivity(modifier = modifier)
+        SplashScreenActivity(modifier = modifier, context = LocalContext.current)
     }
 }
 
