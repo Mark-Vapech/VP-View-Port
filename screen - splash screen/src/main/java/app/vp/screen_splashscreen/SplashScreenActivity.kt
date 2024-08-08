@@ -47,7 +47,6 @@ fun SplashScreenActivity(
         if (loading) {
             loadingAnimation()
         } else {
-//            LoginScreen(modifier = Modifier)
             val intent = Intent(context, ScreenLoginAndRegister::class.java)
             context.startActivity(intent)
         }

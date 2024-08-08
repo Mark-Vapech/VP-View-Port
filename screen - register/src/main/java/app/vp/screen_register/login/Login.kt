@@ -34,13 +34,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.vp.base.textCustom.BasicTextFieldCustom
 import app.vp.base.viewModel.LoginViewModel
-import app.vp.screen_home.mainHome.MainHomeActivity
 import app.vp.screen_register.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -55,6 +54,7 @@ import kotlinx.coroutines.tasks.await
 fun LoginScreen(
     modifier: Modifier = Modifier,
     context: Context,
+    onClick: MutableLiveData<String>,
 ) {
 
     val viewModel = viewModel<LoginViewModel>()
@@ -65,8 +65,7 @@ fun LoginScreen(
 
     val launcher = rememberFirebaseAuth(onAuthSuccess =
     { success ->
-//        val intent = Intent(context, MainHomeActivity::class.java)
-//        context.startActivity(intent)
+        onClick.value = "successFirebase"
     }, onAuthError = { error ->
         user = null
     })

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.result.ActivityResult
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import app.vp.base.constants.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -17,6 +18,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
 
 ) : ViewModel() {
+
+    val onClick = MutableLiveData<String>()
 
     @Suppress("DEPRECATION")
     fun signOut(context: Context, googleSignInClient: GoogleSignInClient) {
