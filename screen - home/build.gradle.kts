@@ -1,13 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.gms.google-services")
-//    id("kotlin-kapt")
-//    id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "app.vp.screen_register"
+    namespace = "app.vp.screen_home"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -15,9 +12,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
@@ -36,20 +30,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
+
     implementation(project(":base"))
 
     implementation(libs.androidx.core.ktx)
@@ -62,7 +46,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(project(":screen - home"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,31 +53,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    implementation(libs.androidx.material)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.lifecycle.viewmodel.compose)
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.koin.androidx.viewmodel)
-
-//    implementation(libs.dagger.hilt.android)
-//    kapt(libs.dagger.hilt.android.compiler)
-//    implementation(libs.dagger.hilt.android.gradle.plugin)
-//    implementation(libs.androidx.hilt.work)
-//    implementation(libs.androidx.work.runtime.ktx)
-//    implementation(libs.androidx.lifecycle.runtime.compose)
-//    implementation(libs.androidx.navigation.compose)
-//    implementation(libs.coil.compose)
-
-    androidTestImplementation(libs.androidx.ui.test.android)
-    implementation(libs.github.onetapcompose)
-
-    // firebase
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
-    implementation(libs.play.services.auth)
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.google.services)
-
 }

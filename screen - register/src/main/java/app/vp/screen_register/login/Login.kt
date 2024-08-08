@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package app.vp.screen_register.login
 
 import android.content.Context
@@ -6,6 +8,7 @@ import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,10 +21,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,18 +33,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.vp.base.textCustom.BasicTextFieldCustom
 import app.vp.base.viewModel.LoginViewModel
+import app.vp.screen_register.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.stevdzasan.onetap.GoogleUser
-import com.stevdzasan.onetap.rememberOneTapSignInState
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -52,14 +53,19 @@ import kotlinx.coroutines.tasks.await
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
+    context: Context,
+    onClick: MutableLiveData<String>,
 ) {
 
     val viewModel = viewModel<LoginViewModel>()
     var user by remember { mutableStateOf(FirebaseAuth.getInstance().currentUser) }
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
 
     val launcher = rememberFirebaseAuth(onAuthSuccess =
-    { succes ->
-        user = succes.user
+    { success ->
+        onClick.value = "successFirebase"
     }, onAuthError = { error ->
         user = null
     })
@@ -73,11 +79,6 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center
     ) {
 
-        var username by remember { mutableStateOf("") }
-        var password by remember { mutableStateOf("") }
-        val token = "725558427498-ratlienpiv3qa8v16f23kglca55igd6f.apps.googleusercontent.com"
-        val context = LocalContext.current
-
         BasicTextFieldCustom(name = "Username", value = username, onValueChange = { username = it })
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -86,7 +87,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(15.dp))
 
-        SignInWithGoogleButton(token, context, launcher, viewModel)
+        SignInWithGoogleButton(context, launcher, viewModel)
 
         Spacer(modifier = Modifier.height(15.dp))
 
@@ -109,7 +110,6 @@ fun rememberFirebaseAuth(
         val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
         try {
             val account = task.getResult(ApiException::class.java)!!
-
             val credential = GoogleAuthProvider.getCredential(account.idToken!!, null)
             scope.launch {
                 val authResult = FirebaseAuth.getInstance().signInWithCredential(credential).await()
@@ -136,7 +136,6 @@ fun LoginButton(onClick: () -> Unit) {
 @Suppress("UNUSED_EXPRESSION")
 @Composable
 fun SignInWithGoogleButton(
-    token: String,
     context: Context,
     launcher: ManagedActivityResultLauncher<Intent, ActivityResult>,
     viewModel: LoginViewModel,
@@ -150,14 +149,13 @@ fun SignInWithGoogleButton(
     ) {
         OutlinedButton(
             onClick = {
-                viewModel.signIn(context = context, token = token, launcher = launcher)
+                viewModel.signIn(context = context, launcher = launcher)
             }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = Icons.Default.AddCircle,
-                    contentDescription = "Google",
-                    modifier = Modifier.size(24.dp)
-                )
+                Image(painter = painterResource(id = R.drawable.google_logo),
+                    contentDescription ="",
+                    modifier = Modifier.size(25.dp),
+                    contentScale = ContentScale.Fit )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(text = "Sign in With Google")
             }
