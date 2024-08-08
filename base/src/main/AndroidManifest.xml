@@ -2,11 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
-        <activity
-            android:name=".loading.LoadingAnimation"
-            android:exported="false"
-            android:label="@string/title_activity_loading_animation"
-            android:theme="@style/Theme.VPViewPort" />
     </application>
 
 </manifest>
